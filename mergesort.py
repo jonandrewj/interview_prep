@@ -1,22 +1,26 @@
-def quicksort( elems ):
+def mergesort( elems ):
+    # RECURSIVE BASE CASE
+    if len(elems) < 2:
+        return elems
+
     # MAKE TWO HALVES
-    middle = elems.length / 2
-    left = elems[0:num]
-    right = elems[num:]
+    middle = len(elems) // 2
+    left = elems[0:middle]
+    right = elems[middle:]
 
     # RECURSIVELY SORT THE TWO SIDES
-    lsorted = quicksort( left )
-    rsorted = quicksort( right )
+    lsorted = mergesort( left )
+    rsorted = mergesort( right )
 
     # MERGE THE TWO HALVES
     lindex = 0
     rindex = 0
     merged = []
-    while lindex < lsorted.length or rindex < rsorted.length:
-        if (lindex >= lsorted.length):
+    while lindex < len(lsorted) or rindex < len(rsorted):
+        if (lindex >= len(lsorted)):
             merged.append( rsorted[rindex] )
             rindex += 1
-        elif (rindex >= rindex.length):
+        elif (rindex >= len(rsorted)):
             merged.append( lsorted[lindex] )
             lindex += 1
         elif (lsorted[lindex] < rsorted[rindex] ):
